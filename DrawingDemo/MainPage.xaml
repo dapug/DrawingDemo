@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             x:Class="DrawingDemo.MainPage"
+             BindingContext="">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label 
+                Text="Draw a test Image"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            
+            <mct:DrawingView x:Name="drawView"  BackgroundColor="LightBlue" 
+                         HeightRequest="200" WidthRequest="200"
+                         IsMultiLineModeEnabled="True" LineColor="Blue"
+                          LineWidth="2" 
+                          DrawingLineCompleted="drawView_DrawingLineCompleted"
+                         />
+            
+            <Button x:Name="clearButton" Text="Clear" Clicked="clearButton_Clicked" WidthRequest="100" />
+            
+            <Label 
+                Text="Drawing streamed to Image Source:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            
+            <Image x:Name="drawPreview" BackgroundColor="Yellow" Aspect="AspectFit" 
+                   MaximumHeightRequest="200" MaximumWidthRequest="200" />
+
+            <Label 
+                Text="Image Control Size:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Label HorizontalOptions="Center" BindingContext="{x:Reference drawPreview}" Text="{Binding Width}" />
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
